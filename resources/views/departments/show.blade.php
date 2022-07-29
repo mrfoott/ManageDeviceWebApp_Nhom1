@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-12 pt-2">
                 <a href="/department" class="btn btn-outline-primary btn-sm">Go back</a>
-                <h1 class="display-one">{{ ($department->nameDepartments) }}</h1>
+                <h1 class="display-one">{{ ($departments->nameDepartments) }}</h1>
                 <h3>Status Department</h3>
-                <a>{{ ($department->statusDepartments) }}</a>
+                <a>{{ ($departments->statusDepartments) }}</a>
                 <hr>
-                <a href="./{{ $department->idDepartments  }}/edit" class="btn btn-outline-primary">Edit Department</a>
+                <a href="./{{ $departments->idDepartments  }}/edit" class="btn btn-outline-primary">Edit Department</a>
                 <br><br>
                 <form id="delete-frm" class="" action="" method ="POST">
                     @method('DELETE')

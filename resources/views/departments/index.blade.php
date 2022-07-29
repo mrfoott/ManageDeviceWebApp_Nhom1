@@ -12,9 +12,9 @@
                         <a href="/department/create/department" class="btn btn-primary btn-sm">Add Department</a>
                     </div>
                 </div>
-                @forelse($departments as $departments)
+                @forelse($department as $department)
                     <ul>
-                        <li><a href="department/{{ $departments->idDepartments }}">{{ ucfirst($departments->nameDepartments ) }}</a></li>
+                        <li><a href="department/{{ $department->idDepartments }}">{{ ucfirst($department->nameDepartments ) }}</a></li>
                     </ul>
                 @empty
                     <p class="text-warning">No Department available</p>

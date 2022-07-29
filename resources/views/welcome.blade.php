@@ -16,6 +16,12 @@
                 <br>
                 <br>
                 <a href="/user" class="btn btn-outline-primary">Show Users</a>
+                <br>
+                <br>
+                <a href="/inve" class="btn btn-outline-primary">Show Inventories</a>
+                <br>
+                <br>
+                <a href="/ticket" class="btn btn-outline-primary">Show Tickets</a>
             </div>
         </div>
     </div>

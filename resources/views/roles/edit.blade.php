@@ -22,6 +22,7 @@
                                        placeholder="Enter Role Description" value="{{ $role->descriptionRoles }}" required>
                             </div>
                         </div>
+                        <h1>{{$role->descriptionRoles}}</h1>
                         <div class="row mt-2">
                             <div class="control-group col-12 text-center">
                                 <button id="btn-submit" class="btn btn-primary">

@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Đăng ký thành viên
+Route::get('register', 'Auth\RegisterController@getRegister');
+Route::post('register', 'Auth\RegisterController@postRegister');
+
+// Đăng nhập và xử lý đăng nhập
+Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@getLogin']);
+Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@postLogin']);
+
+// Đăng xuất
+Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLogout']);
+
 Route::get('/role', [\App\Http\Controllers\RolesController::class, 'index']);
 Route::get('/role/{role_id}', [\App\Http\Controllers\RolesController::class, 'show']);
 Route::get('/role/create/role', [\App\Http\Controllers\RolesController::class, 'create']);
@@ -48,3 +59,19 @@ Route::post('/user/create/user', [\App\Http\Controllers\UserController::class, '
 Route::get('/user/{user}/edit', [\App\Http\Controllers\UserController::class, 'edit']);
 Route::put('/user/{user}/edit', [\App\Http\Controllers\UserController::class, 'update']);
 Route::delete('/user/{user}', [\App\Http\Controllers\UserController::class, 'destroy']);
+
+Route::get('/inve', [\App\Http\Controllers\InventoriesController::class, 'index']);
+Route::get('/inve/{inve_id}', [\App\Http\Controllers\InventoriesController::class, 'show']);
+Route::get('/inve/create/inve', [\App\Http\Controllers\InventoriesController::class, 'create']);
+Route::post('/inve/create/inve', [\App\Http\Controllers\InventoriesController::class, 'store']);
+Route::get('/inve/{inve}/edit', [\App\Http\Controllers\InventoriesController::class, 'edit']);
+Route::put('/inve/{inve}/edit', [\App\Http\Controllers\InventoriesController::class, 'update']);
+Route::delete('/inve/{inve}', [\App\Http\Controllers\InventoriesController::class, 'destroy']);
+
+Route::get('/ticket', [\App\Http\Controllers\TicketsController::class, 'index']);
+Route::get('/ticket/{ticket_id}', [\App\Http\Controllers\TicketsController::class, 'show']);
+Route::get('/ticket/create/ticket', [\App\Http\Controllers\TicketsController::class, 'create']);
+Route::post('/ticket/create/ticket', [\App\Http\Controllers\TicketsController::class, 'store']);
+Route::get('/ticket/{ticket}/edit', [\App\Http\Controllers\TicketsController::class, 'edit']);
+Route::put('/ticket/{ticket}/edit', [\App\Http\Controllers\TicketsController::class, 'update']);
+Route::delete('/ticket/{ticket}', [\App\Http\Controllers\TicketsController::class, 'destroy']);

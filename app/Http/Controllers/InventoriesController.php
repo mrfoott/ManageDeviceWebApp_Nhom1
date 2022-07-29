@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventories;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\In;
 
 class InventoriesController extends Controller
 {
@@ -14,7 +15,9 @@ class InventoriesController extends Controller
      */
     public function index()
     {
-        //
+        $inve = Inventories::all();
+        return view('inventories.index', [
+            'inve' => $inve]);
     }
 
     /**
@@ -24,7 +27,7 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventories.create');
     }
 
     /**
@@ -35,7 +38,12 @@ class InventoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newInve = Inventories::create([
+            'nameInventories' => $request->nameInventories,
+            'nameUsers' => $request->nameUsers,
+            'statusUsers' => $request->statusUsers,
+        ]);
+        return redirect('inve/' . $newInve->idInventories );
     }
 
     /**
@@ -44,9 +52,12 @@ class InventoriesController extends Controller
      * @param  \App\Models\Inventories  $inventories
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventories $inventories)
+    public function show($inve_id)
     {
-        //
+        $inve = Inventories::where('idInventories', $inve_id)->first();
+        return view('inventories.show', [
+            'inve' => $inve,
+        ]);
     }
 
     /**
@@ -57,7 +68,9 @@ class InventoriesController extends Controller
      */
     public function edit(Inventories $inventories)
     {
-        //
+        return view('inventories.edit', [
+            'inventories' => $inventories,
+        ]);
     }
 
     /**
@@ -69,7 +82,12 @@ class InventoriesController extends Controller
      */
     public function update(Request $request, Inventories $inventories)
     {
-        //
+        $inventories->update([
+            'nameInventories' => $request->nameInventories,
+            'nameUsers' => $request->nameUsers,
+            'statusUsers' => $request->statusUsers,
+        ]);
+        return redirect('inve/' . $inventories->idInventories);
     }
 
     /**
@@ -80,6 +98,8 @@ class InventoriesController extends Controller
      */
     public function destroy(Inventories $inventories)
     {
-        //
+        $inventories->delete();
+
+        return redirect('/inve');
     }
 }

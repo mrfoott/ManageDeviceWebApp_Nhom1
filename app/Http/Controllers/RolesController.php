@@ -83,11 +83,13 @@ class RolesController extends Controller
      */
     public function update(Request $request, Roles $roles)
     {
+        dd($roles->descriptionRoles);
+    //    dd($request->descriptionRoles);
         $roles->update([
             'descriptionRoles' => $request->descriptionRoles,
         ]);
-//        dd($request->descriptionRoles);
-        return redirect('role/' . $roles->idRoles);
+
+//        return redirect('role/' . $roles->idRoles);
     }
 
 

@@ -14,7 +14,9 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        //
+        $ticket = Tickets::all();
+        return view('tickets.index', [
+            'ticket' => $ticket]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TicketsController extends Controller
      */
     public function create()
     {
-        //
+        return view('tickets.create');
     }
 
     /**
@@ -35,7 +37,11 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newTicket = Tickets::create([
+            'nameTickets' => $request->nameTickets,
+            'descriptionTickets' => $request->descriptionTickets,
+        ]);
+        return redirect('ticket/' . $newTicket->idTickets);
     }
 
     /**
@@ -44,9 +50,12 @@ class TicketsController extends Controller
      * @param  \App\Models\Tickets  $tickets
      * @return \Illuminate\Http\Response
      */
-    public function show(Tickets $tickets)
+    public function show($ticket_id)
     {
-        //
+        $ticket = Tickets::where('idTickets', $ticket_id)->first();
+        return view('tickets.show', [
+            'ticket' => $ticket,
+        ]);
     }
 
     /**
@@ -57,7 +66,9 @@ class TicketsController extends Controller
      */
     public function edit(Tickets $tickets)
     {
-        //
+        return view('tickets.edit', [
+            'tickets' => $tickets,
+        ]);
     }
 
     /**
@@ -69,7 +80,11 @@ class TicketsController extends Controller
      */
     public function update(Request $request, Tickets $tickets)
     {
-        //
+        $tickets->update([
+            'nameTickets' => $request->nameTickets,
+            'descriptionTickets' => $request->descriptionTickets,
+        ]);
+        return redirect('ticket/' . $tickets->idTickets);
     }
 
     /**
@@ -80,6 +95,8 @@ class TicketsController extends Controller
      */
     public function destroy(Tickets $tickets)
     {
-        //
+        $tickets->delete();
+
+        return redirect('/ticket');
     }
 }
